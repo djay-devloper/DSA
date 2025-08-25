@@ -1,0 +1,30 @@
+//finding first and last occurance of a character in a string.
+#include<iostream>
+using namespace std;
+void FindFirstAndLastIndex(string s, char ch, int*first, int*last){
+    for(int i=0;i<s.size();i++){
+        if(s[i]==ch){
+            *first=i;
+            break;
+        }
+    }
+    for(int i=s.size()-1;i>0;i--){
+        if(s[i]==ch){
+            *last=i;
+            break; 
+        }
+    }    
+}
+int main(){
+    string s="aaacad";
+    char ch ='a';
+    int first=-1;
+    int last=-1;
+    int*pf=&first;
+    int*pl=&last;
+    cout<<pf<<" "<<pl<<endl;
+    FindFirstAndLastIndex("aaacad",'a',pf,pl);
+    cout<<pf<<" "<<pl<<endl;
+    cout<<*pf<<" "<<*pl<<endl;
+    return 0;
+}
