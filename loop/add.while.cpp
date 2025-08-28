@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream> //iostream is header file
 using namespace std;
 int main(){
     int num1,num2;
