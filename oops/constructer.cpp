@@ -5,7 +5,7 @@ class Car {
 public:
     string brand;
     int year;
-    //This is a default one called by compiler.
+    //This is a default one created by you. if not created by u then compiler calls its own default one.
     Car(){
         cout<<"Default one is called automatically"<<endl;
     }
