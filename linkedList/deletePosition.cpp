@@ -1,5 +1,5 @@
 // Delete at Given Position (kth node)
-// must have two nodes by side.
+// must have two nodes by side. otherwise cases of head and tail will be aplied.
 #include <iostream>
 using namespace std;
 
@@ -10,47 +10,35 @@ public:
     Node(int val) { data = val; next = NULL; }
 };
 
-void insertAtEnd(Node* &head, int val) {
-    Node* newNode = new Node(val);
-    if (head == NULL) { head = newNode; return; }
-    Node* temp = head;
-    while (temp->next != NULL) temp = temp->next;
-    temp->next = newNode;
-}
-
 void printList(Node* head) {
     while (head != NULL) { cout << head->data << " -> "; head = head->next; }
     cout << "NULL\n";
 }
 
-void deleteAtPosition(Node* &head, int pos) {
-    if (head == NULL) return;
-    if (pos == 1) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-        return;
+void deleteAtPosition(Node* &head, int position){
+    //iterating to position-1 node.
+    Node*itr= head;
+    int count= 1;
+    while(count< position-1){
+        itr= itr->next;
+        count++;
     }
-    Node* temp = head;
-    for (int i = 1; temp != NULL && i < pos-1; i++) temp = temp->next;
-    if (temp == NULL || temp->next == NULL) return;
-    Node* nodeToDelete = temp->next;
-    temp->next = temp->next->next;
-    delete nodeToDelete;
-}
-
+    Node*temp= itr->next;
+    itr->next= itr->next->next;
+    delete temp; 
+    cout<<"Deleted "<<position<<"th Node"<<endl;
+}    
+    
 int main() {
-    Node* head = NULL;
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 20);
-    insertAtEnd(head, 30);
-    insertAtEnd(head, 40);
+    Node*n1= new Node(10);
+    Node*n2= new Node(20);
+    Node*n3= new Node(30);
 
-    cout << "Before Deletion: ";
+    //Linking them
+    n1->next= n2;
+    n2->next= n3;
+    Node*head= n1;
     printList(head);
-
-    deleteAtPosition(head, 3); // delete 3rd node
-
-    cout << "After Deletion (Position 3): ";
+    deleteAtPosition(head, 2);
     printList(head);
 }
