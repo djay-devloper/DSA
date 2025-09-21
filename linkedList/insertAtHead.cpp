@@ -13,7 +13,7 @@ class Node{
 };
 void insertAtHead(Node* &head, int d){
     Node*newNode= new Node(d);
-    //if list is empty then only update head.
+    //if list is empty then only make it head.
     if(head== NULL){
         head= newNode; 
         return;

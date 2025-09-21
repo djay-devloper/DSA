@@ -4,15 +4,22 @@ class Node{
     public:
     int data;
     Node*next= NULL;
+
+    Node(int data){
+        this->data= data;
+        next= nullptr;
+    }
 };
- //insert at tail
- void insertAtTail(Node* &tail , int data){
-    Node*temp= new Node();
-    temp-> data= data;            //to be noted
-    temp-> next=NULL;
-    tail->next= temp;
-    tail= temp;
- }
+
+void insertAtTail(Node* &head, int data){
+    Node*newNode= new Node(data);
+    Node*itr= head;
+    while(itr->next!= nullptr){
+        itr= itr->next;
+    }
+    itr->next= newNode;
+}
+ 
  void PrintList(Node* &head){
     Node*iterator= head;
     while(iterator!= NULL){
@@ -22,19 +29,14 @@ class Node{
     cout<<"NULL";
  }
 int main(){
-    Node*first= new Node();
-    first-> data= 10;
-    // first-> next= NULL;
-    Node*second= new Node();
-    second->data= 20;
-    second->next= NULL;
-    first->next= second;
+    Node*n1= new Node(10);
+    Node*n2= new Node(20);
+    Node*n3= new Node(30);
 
-    //callin insertion at tail
-    Node*tail= second; 
-    insertAtTail(tail , 30);
-    insertAtTail(tail , 40);
-    insertAtTail(tail , 50);
-    PrintList(first);
+    //Linking them
+    n1->next= n2;
+    n2->next= n3;
+    insertAtTail(n1, 40);
+    PrintList(n1);
     return 0;
 }

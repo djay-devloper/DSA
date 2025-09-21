@@ -10,36 +10,28 @@ class Node{
     //constructer to initialize node
     Node(int data ){
         this->data= data;
+        next= nullptr;
     }
 };
 
- //Insert at Head of SLL.
- void insertAtHead(int d , Node* &head){
-    //creating node
-    Node*temp= new Node(d);
-    temp->next= head;
-    temp->data= d;
-    head= temp;
- }
-
  //Traversing ll
  void printList(Node* head) {
-    Node* temp = head;
-    while (temp != nullptr) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+    Node* itr = head;
+    while (itr != nullptr) {
+        cout << itr->data << " -> ";
+        itr = itr->next;
     }
     cout << "NULL" << endl;
 }
 int main(){
-    //Single node hence already head node
+    //Node are just created at random memory.
     Node*n1= new Node(10);
-    cout<<n1->data<<"  "<<n1->next<<endl;
+    Node*n2= new Node(20);
+    Node*n3= new Node(30);
 
-    //inserting
-    Node*head= n1;
-    insertAtHead(20 , head);
-    insertAtHead(30 , head);
-    printList(head);
+    //Linking them
+    n1->next= n2;
+    n2->next= n3;
+    printList(n1);  //Try putting n2 there.
     return 0;
 }
