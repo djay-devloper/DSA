@@ -1,3 +1,4 @@
+//there will be at least one node
 #include<iostream>
 using namespace std;
 class Node{

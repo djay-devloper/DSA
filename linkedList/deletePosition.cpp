@@ -1,6 +1,5 @@
 // Delete at Given Position (kth node)
-// If k == 1, it’s the head deletion.
-// Otherwise, move to (k-1)th node, and unlink kth node.
+// must have two nodes by side.
 #include <iostream>
 using namespace std;
 

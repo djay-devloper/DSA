@@ -1,47 +1,43 @@
-// Delete from Head (first node)
+// Delete from Head (first node). two cases if only one node or many nodes
 // Just move head to the next node and free the old head.
 
 #include <iostream>
 using namespace std;
-
 class Node {
 public:
     int data;
     Node* next;
+
     Node(int val) { data = val; next = NULL; }
 };
 
-void insertAtEnd(Node* &head, int val) {
-    Node* newNode = new Node(val);
-    if (head == NULL) { head = newNode; return; }
-    Node* temp = head;
-    while (temp->next != NULL) temp = temp->next;
-    temp->next = newNode;
-}
-
 void printList(Node* head) {
     while (head != NULL) { cout << head->data << " -> "; head = head->next; }
-    cout << "NULL\n";
+    cout << "NULL\n"<<endl;
 }
 
 void deleteHead(Node* &head) {
-    if (head == NULL) return;
-    Node* temp = head;
-    head = head->next;
+    Node*temp= head;
+    head= head->next; //think for only one node wala case.
     delete temp;
+    cout<<"Head deleted.. "<<endl;
 }
 
 int main() {
-    Node* head = NULL;
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 20);
-    insertAtEnd(head, 30);
+    Node*n1= new Node(10);
+    Node*n2= new Node(20);
+    Node*n3= new Node(30);
 
-    cout << "Before Deletion: ";
+    //Linking them
+    n1->next= n2;
+    n2->next= n3;
+    Node*head= n1;
     printList(head);
-
+    deleteHead(head);
+    printList(head);
+    deleteHead(head);
+    printList(head);
     deleteHead(head);
 
-    cout << "After Deletion (Head): ";
-    printList(head);
+    return 0;
 }
