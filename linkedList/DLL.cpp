@@ -13,14 +13,25 @@ class Node{
         next= nullptr;
     }
 };
+
+//traversing forward
+void printListf(Node* head) {
+    Node* itr = head;
+    while (itr != nullptr) {
+        cout << itr->data << " <-> ";
+        itr = itr->next;
+    }
+    cout << "NULL" << endl;
+}
+
 //Traversing backward
-void printList(Node* &tail){
+void printListb(Node* &tail){
     Node*itr= tail;
     while(itr!=nullptr){
-        cout<<itr->data<<"->";
+        cout<<itr->data<<" <-> ";
         itr= itr->prev;
     }
-    cout<<"NULL";
+    cout<<"NULL"<<endl;
 }
 int main(){
     Node*n1= new Node(10);
@@ -32,6 +43,7 @@ int main(){
     n2->prev= n1;
     n2->next= n3;
     n3->prev= n2;
-    printList(n3);
+    printListf(n1);
+    printListb(n3);
     return 0;
 }
