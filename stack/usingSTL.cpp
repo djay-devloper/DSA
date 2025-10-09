@@ -1,3 +1,4 @@
+//using std library where stack class is already present.
 #include<iostream>
 #include<stack>
 using namespace std;
