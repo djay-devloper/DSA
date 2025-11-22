@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "iostream": "cpp"
-    }
+    },
+    "scm.repositories.sortOrder": "discovery time"
 }
