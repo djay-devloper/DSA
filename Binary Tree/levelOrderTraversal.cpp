@@ -1,8 +1,7 @@
-// preorder traversal is used to build tree keh sakte hain
-// Root-> left subtree-> Right subtree
+// Firstly create a binary tree and then make a level order traversal.
 #include<iostream>
+#include<queue>
 using namespace std;
-
 class node{
     public:
     int data;
@@ -35,8 +34,34 @@ node* buildTree(node* root){
     return root;
 
 }
+
+void levelOrderTraversal(node* root){
+    queue<node*> q;
+    if(root== NULL){return;}
+    //Entering the root node only.
+    q.push(root);
+    
+    while(!q.empty()){
+        node*temp= q.front();
+        cout<<temp->data<<" ";
+        q.pop();
+
+        if(temp->left){
+            q.push(temp->left);
+        }
+
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+
+}
+
 int main (){
     node*root= NULL;
-    buildTree(root);
+    root= buildTree(root);
+
+    cout<<"Printing level order traversal"<<endl;
+    levelOrderTraversal(root);
     return 0;
 }
